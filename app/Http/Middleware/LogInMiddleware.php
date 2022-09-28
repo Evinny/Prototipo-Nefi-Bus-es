@@ -23,14 +23,20 @@ class LogInMiddleware
 
         $ip = $request->server->get('REMOTE_ADDR');
         
-        $inputUser = $request['usuario'];
-        $inputSenha = $request['senha'];
+        $inputUser = $_POST['usuario'];
+        $inputSenha = $_POST['senha'];
         
-        $temp = Adiministrador::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+        $LogAdm = Adiministrador::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+        $LogEmpresa = Empresa::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+        $LogInscrito = inscrito::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
         
+        if ($LogAdm == $LogAdm or $LogAdm == $LogInscrito or $LogInscrito == $LogEmpresa ){
+            return redirect()->route('login.resolve');
+        }
+
+        if ($LogAdm->IsNotEmpty()){
         
-        if ($temp->IsNotEmpty()){
-        
+            //se o usuario e senha forem legitimos, atualiza a database templog que o usuario é um adm
             $del = TempLog::all()->first()->delete();
             $aut = new TempLog;
             $aut->auth_inscrito = false;
@@ -41,7 +47,8 @@ class LogInMiddleware
             return redirect()->route('site.index');
         }
 
-
+       
+        
        
         return redirect('/login')->with('negado', 'negado');
     }

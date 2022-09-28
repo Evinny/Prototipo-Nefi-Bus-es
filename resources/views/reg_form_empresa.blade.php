@@ -1,6 +1,13 @@
 
+
+{{print_r($errors) }}
+{{-- formulario de inscrição de empresas --}}
 <form action={{ route('site.Empresainscrito') }} method="post">
     @csrf
+    <input name="usuario" type="text" placeholder="Nome de usuario" >
+    <br>
+    <input name="senha" type="text" placeholder="Senha" >
+    <br>
     <input name="nome" type="text" placeholder="Nome da empresa" >
     <br>
     <input name="responsavel" type="text" placeholder="nome do responsavel" >

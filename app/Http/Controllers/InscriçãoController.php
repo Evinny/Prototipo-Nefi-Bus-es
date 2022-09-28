@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Inscrito;
+use App\Adiministrador;
 use App\Empresa;
+use App\Inscrito;
+use App\TempLog;
 
 class InscriçãoController extends Controller
 {
@@ -13,7 +15,8 @@ class InscriçãoController extends Controller
         $request->validate([
             'nome'=>'required', 'sobrenome'=>'required',
             'idade'=>'required', 'telefone'=>'required',
-            'rg'=>'required', 'cpf'=>'required', 'email'=>'required',
+            'rg'=>'required', 'cpf'=>'required', 'email'=>'required','usuario'=>'required', 
+            'senha'=>'required'
         ]);
 
         $insert = new Inscrito;
@@ -24,7 +27,10 @@ class InscriçãoController extends Controller
         $insert->idade =  $_POST['idade'];
         $insert->telefone = $_POST['telefone'];
         $insert->email = $_POST['email'];
+        $insert->usuario = $_POST['usuario'];
+        $insert->senha = $_POST['senha'];
         
+
         $insert->save();     
         
         
@@ -47,7 +53,15 @@ class InscriçãoController extends Controller
         return view('reg_form_empresa');
 
     }
-    public function emp_form(){
+    public function emp_form(request $request){
+        
+        $request->validate([
+            'nome'=>'required', 'responsavel'=>'required',
+            'tipo'=>'required', 'telefone'=>'required',
+            'estado'=>'required', 'cnpj'=>'required', 'email'=>'required','usuario'=>'required', 
+            'senha'=>'required',
+        ]);
+        
         $insert = new Empresa;
         $insert->nome = $_POST['nome'];
         $insert->responsavel = $_POST['responsavel'];
@@ -56,7 +70,9 @@ class InscriçãoController extends Controller
         $insert->estado =  $_POST['estado'];
         $insert->telefone = $_POST['telefone'];
         $insert->tipo = $_POST['tipo'];
-        
+        $insert->usuario = $_POST['usuario'];
+        $insert->senha = $_POST['senha'];
+
         $insert->save();     
         
         
@@ -64,7 +80,26 @@ class InscriçãoController extends Controller
         return view('redirect');
     }
 
+    public function resolve(){
 
+
+
+        //a variavel $inputuser so existe no middleware
+        $LogAdm = Adiministrador::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+        $LogEmpresa = Empresa::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+        $LogInscrito = inscrito::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+
+        if ($LogAdm->isEmpty())
+            $ExistsAdm = 1;
+        if ($LogEmpresa->isEmpty())
+            $ExistsEmpresa = 1;
+        if ($LogInscrito->isEmpty())
+            $ExistsInscrito = 1;
+
+            return view('account_resolve_select')->with($ExistsAdm)->with($ExistsEmpresa)
+            ->with($ExistsInscrito);
+
+    }
 
 
 

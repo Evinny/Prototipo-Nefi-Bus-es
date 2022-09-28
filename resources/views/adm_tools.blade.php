@@ -2,7 +2,7 @@
 
 
 
-
+{{--WIP:FERRAMENTAS PARA APAGAR, ADICIONAR E MODIFICAR--}}
 
 
 {{print_r($data_emp)}}<br><hr><br>
@@ -10,7 +10,8 @@
 <br>
 <h3>---------</h3>
 
-
+{{-- displays todas as empresas registradas no sistema, WIP:AUTORIZAÇÃO DE EMPRESAS PELO ADM ANTES
+    QUE ENTREM NA DATABASE OFICIAL--}}
 <h2>Empresas Registradas</h2>
 <h3>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone</h3>
 <hr>
@@ -20,7 +21,7 @@
 @endforeach
  
 <h2>---------------</h2>
-
+{{--displays todos os membros registrados no sistema--}}
 <h2>Membros Registrados</h2>
 <h3>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone</h3>
 <hr>

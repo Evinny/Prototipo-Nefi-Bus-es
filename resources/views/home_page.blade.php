@@ -70,6 +70,7 @@
                      </div>
                      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                         <ul class="btn">
+                           {{--SEÇÃO DE LOGIN E LOGOUT--}}
                            <li class="down_btn"><a href="{{route('login')}}">Log-in</a></li>
                            <li><a href="{{route('unlog')}}">Encerrar seção</a></li>
                            <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
@@ -101,7 +102,7 @@
                               <div class="text-bg">
                                  <h1>Facilite <br>sua vida e seja um<br>inscrito</h1>
                                  <p>Melhor serviço de transporte em massa na palma da sua mão</p>
-                                   
+                                   {{--SEÇÃO DE INSCRIÇÃO DO INSCRITO--}}
                                  <a class="read_more" href='{{route('site.dados')}}'>Inscreva-se</a>
                               </div>
                            </div>
@@ -122,6 +123,7 @@
                               <div class="text-bg">
                                  <h1>Quer trabalhar<br>conosco?<br></h1>
                                  <p>registre sua empresa e consiga mais viagens </p>
+                                 {{--SEÇÃO DE INSCRIÇÃO DE EMPRESAS--}}
                                  <a class="read_more" href="{{route('site.Empresadados')}}">entre</a>
                               </div>
                            </div>
@@ -142,6 +144,7 @@
                               <div class="text-bg">
                                  <h1>Moderador?<br> Entre em sua conta <br>e gerencie!</h1>
                                  <p>Configuraçoes e ferramentas faceis e praticas para voce manejar</p>
+                                 {{--SEÇÃO DE REDIRECT PARA FERRAMENTAS ADM COM VERIFICAÇÃO DE LOGIN--}}
                                  <a class="read_more" href="{{route('site.adm')}}">entre</a>
                               </div>
                            </div>

@@ -1,12 +1,12 @@
 
-{{print_r($errors)}}
 
-@if(empty($errors))
-    <h2>Formulario incompleto</h2>
-@endif
-
+{{-- formulario de inscrição de inscritos --}}
 <form action='{{ route('site.inscrito') }}' method="post">
     @csrf
+    <input name="usuario" type="text" placeholder="Nome de usuario" >
+    <br>
+    <input name="nsenha" type="text" placeholder="Senha" >
+    <br>
     <input name="nome" type="text" placeholder="Nome" >
     <br>
     <input name="sobrenome" type="text" placeholder="Sobrenome" >
