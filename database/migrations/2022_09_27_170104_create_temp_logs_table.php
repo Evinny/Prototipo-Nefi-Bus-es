@@ -16,9 +16,9 @@ class CreateTempLogsTable extends Migration
         Schema::create('temp_logs', function (Blueprint $table) {
             $table->id();
             $table->string('token', 100);
-            $table->string('auth_inscrito', 30);
-            $table->string('auth_empresa', 30);
-            $table->string('auth_adm', 30);
+            $table->string('auth_inscrito', 30)->nullable();
+            $table->string('auth_empresa', 30)->nullable();
+            $table->string('auth_adm', 30)->nullable();
             $table->timestamps();
         });
     }

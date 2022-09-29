@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>potoub</title>
+      <title>Nefi-Busões</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -145,7 +145,7 @@
                                  <h1>Moderador?<br> Entre em sua conta <br>e gerencie!</h1>
                                  <p>Configuraçoes e ferramentas faceis e praticas para voce manejar</p>
                                  {{--SEÇÃO DE REDIRECT PARA FERRAMENTAS ADM COM VERIFICAÇÃO DE LOGIN--}}
-                                 <a class="read_more" href="{{route('site.adm')}}">entre</a>
+                                 <a class="read_more" href="{{route('site.admi')}}">entre</a>
                               </div>
                            </div>
                            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">

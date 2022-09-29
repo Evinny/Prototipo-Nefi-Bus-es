@@ -15,7 +15,7 @@ class AlterTempLogsTableTokentoip extends Migration
     {
         schema::table('temp_logs', function(blueprint $table){
             $table->dropcolumn('token');
-            $table->string('ip', 30);
+            $table->string('ip', 30)->nullable();
         });
     }
 

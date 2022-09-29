@@ -5,7 +5,7 @@
     @csrf
     <input name="usuario" type="text" placeholder="Nome de usuario" >
     <br>
-    <input name="nsenha" type="text" placeholder="Senha" >
+    <input name="senha" type="text" placeholder="Senha" >
     <br>
     <input name="nome" type="text" placeholder="Nome" >
     <br>

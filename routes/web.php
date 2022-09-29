@@ -12,13 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//DEBUG -------|
+Route::get('/', 'DebugController@empTeste');
+
 
 
 //ROTAS DIRETAS -------|
 
-Route::get('/', function () { 
+/*Route::get('/', function () { 
     return view('home_page');
-})->name('site.index');
+})->name('site.index');*/
 
 Route::get('/login', function(){ //login no middleware LoginMiddleware passando pela view login e
     return view('Login_form'); //so depois de passar pelo form, manda por post pra rota post do adm
@@ -51,13 +54,16 @@ route::post('/Inscrição/empresa', 'InscriçãoController@emp_form')->name('sit
 
 
 //autoriza e loga as seçoes adiministradoras
-route::get('/admin/login', 'AdminController@log')->name('site.adm'); //-> acessa diretamente as ferramentas
+route::get('/admin/login', 'AdminController@log')->name('site.admi'); //-> acessa diretamente as ferramentas
 route::middleware('login')->post('/login', function(){})->name('site.adm'); //-> serve apenas para um form dar um redirect
 //para salvar as informaçoes de login atravez do middleware login
 
 
-route::get('/login/resolve', 'InscriçãoController@resolve')->name('login.resolve');
+//adiministra caso o usuario que está tentando logar tenha mais de 1 conta
+route::get('/login/resolve', 'InscriçãoController@resolve')->name('login.resolve');//
 route::post('/login/resolve', 'InscriçãoController@resolve')->name('login.resolve');
+route::middleware('resolve')->post('/login/resolved', 'InscriçãoController@resolved')
+->name('login.resolved');
 
 
 //-----------------------|

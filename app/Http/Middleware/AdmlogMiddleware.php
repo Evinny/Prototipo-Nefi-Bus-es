@@ -19,7 +19,7 @@ class AdmlogMiddleware
         
         $ip = $request->server->get('REMOTE_ADDR');
 
-        $autenticate = new TempLog;
+        
         $autenticate = TempLog::all()->first()->toarray();
 
         if ($autenticate['ip'] == $ip){

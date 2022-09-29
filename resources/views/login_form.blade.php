@@ -4,8 +4,8 @@
 {{--seção de login de todos os tipos de usuarios em uma blade(vulgo view) só--}}
 <H1> Login</h1><br>
 
-<hr><br>
-<h2> ADIMINISTRADOR</h2><br>
+<hr>
+<h2> Acesse sua conta</h2><br>
 {{--login do adm--}}
 <form action='{{ route('site.adm') }}' method="post">
     @csrf
@@ -25,18 +25,4 @@
     <br>
     <button type="submit" >LOG-IN</button>
 </form>
-<br>
-<hr><br>
-{{--login do inscrito, lembrar de criar uma senha pra eles--}}
-<h2> INSCRITO</h2><br>
-<form action='{{ route('site.inscrito') }}' method="post">
-    @csrf
-    <input name="email" type="text" placeholder="E-mail" >
-    <br>
-    <input name="cpf" type="text" placeholder="CPF" >
-    <br>
-    
-    
-    <br>
-    <button type="submit" >ENVIAR</button>
-</form>
+<hr>

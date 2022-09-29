@@ -80,25 +80,47 @@ class InscriçãoController extends Controller
         return view('redirect');
     }
 
-    public function resolve(){
+    public function resolve(request $request){
 
-
-
+        $temp = TempLog::all()->first()->toarray();
+        $inputUser = $temp['resolveUser'];
+        $inputSenha = $temp['resolveSenha'];
         //a variavel $inputuser so existe no middleware
         $LogAdm = Adiministrador::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
         $LogEmpresa = Empresa::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
         $LogInscrito = inscrito::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
 
-        if ($LogAdm->isEmpty())
-            $ExistsAdm = 1;
-        if ($LogEmpresa->isEmpty())
-            $ExistsEmpresa = 1;
-        if ($LogInscrito->isEmpty())
-            $ExistsInscrito = 1;
+        $Existsa = '';
+        $Existse = '';
+        $Existsi = '';
 
-            return view('account_resolve_select')->with($ExistsAdm)->with($ExistsEmpresa)
-            ->with($ExistsInscrito);
+        if ($LogAdm->isnotEmpty())
+            $Existsa = 1;
+        if ($LogEmpresa->isnotEmpty())
+            $Existse = 1;
+        if ($LogInscrito->isnotEmpty())
+            $Existsi = 1;
+        
+        
+            return view('account_resolve_select')->with('Existsa', $Existsa)->with('Existse', $Existse)->with('Existsi',$Existsi);
 
+    }
+
+    public function resolved(request $request){
+        
+        print_r($request['account_type']);
+        $temp = $_POST['account_type'];
+        
+        switch ($temp){
+            case 1:
+                print_r('qual foi ');
+            case 2:
+                print_r('deu certo');
+            case 3:
+                
+        }
+        
+        print_r($_POST['account_type']);
     }
 
 

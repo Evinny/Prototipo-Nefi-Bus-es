@@ -1,15 +1,25 @@
 
 
 
-    <form action='{{route('login.resolve')}}' method="post">
+<h1> Você possui varias contas em setores diferentes,<br> 
+    qual deseja acessar?<h1>
+
+
+<form action='{{route('login.resolved')}}' method="post">
         @csrf
-        <option value=''>Qual conta deseja logar?</option>
-        
-        @isset($ExistsInscrito)
-            <option value='1'> Inscrito </option>
-        @isset($ExistsEmpresa)
-            <option value='2'> Empresa </option>
-        @isset($ExistsAdm)
-            <option value='3'> Adiministrador </option>
-        
-    </form>
+        <select name="account_type" >
+            <option value=''>Qual conta deseja logar?</option>
+            {{print_r($Existsi)}}
+            @if($Existsi == 1)
+                <option value = '1'> inscrito </option>
+            @endif
+            @if($Existse == 1)
+                <option value = '2'> empresa </option>
+            @endif
+            @if($Existsa == 1)
+            <option value = '3'> adm </option>
+            @endif
+        </select>
+        <button type="submit" >ENVIAR</button>
+            
+</form>
