@@ -124,7 +124,7 @@
                                  <h1>Quer trabalhar<br>conosco?<br></h1>
                                  <p>registre sua empresa e consiga mais viagens </p>
                                  {{--SEÇÃO DE INSCRIÇÃO DE EMPRESAS--}}
-                                 <a class="read_more" href="{{route('site.Empresadados')}}">entre</a>
+                                 <a class="read_more" href="{{route('empresa.tools')}}">entre</a>
                               </div>
                            </div>
                            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">

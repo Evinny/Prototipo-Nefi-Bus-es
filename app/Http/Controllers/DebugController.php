@@ -8,13 +8,7 @@ use App\TempLog;
 
 class DebugController extends Controller
 {
-    public function empTeste(){
-        //random inscritos para empresas trabalharem
-        $jobData = Inscrito::all()->toarray();
-        $user = TempLog::all()->pluck('resolveUser')->toarray();
-        $user = $user[0];
+    public function Teste(){
         
-
-        return view('EmpresasJobs')->with('user',$user)->with('jobData',$jobData);
     }
 }

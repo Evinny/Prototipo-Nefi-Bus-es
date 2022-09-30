@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\TempLog;
+
 
 class EmpresalogMiddleware
 {
@@ -15,6 +17,22 @@ class EmpresalogMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $ip = $request->server->get('REMOTE_ADDR');
+
+        
+        $autenticate = TempLog::all()->first()->toarray();
+
+        if ($autenticate['ip'] == $ip){
+            if($autenticate['auth_empresa'] == '1'){
+                return $next($request);
+            }
+        }
+
+        if ($autenticate['auth_adm'] == '0' and $autenticate['auth_inscrito'] == '0' and $autenticate['auth_empresa'] == '0'){
+            return response('Voce não esta logado');
+        }
+
+        return response('Voce nao é uma empresa');
     }
+    
 }

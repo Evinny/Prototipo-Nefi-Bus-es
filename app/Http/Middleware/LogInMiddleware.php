@@ -34,16 +34,17 @@ class LogInMiddleware
         $LogEmpresa = Empresa::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
         $LogInscrito = inscrito::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
         //----------------------------------------------|
-
+        //return response(print_r("$LogEmpresa-----------------------$LogInscrito"));
 
 
         //----------------------------------------------|
         //teste de contas duplicatas 
-        if ($LogAdm == $LogAdm or $LogAdm == $LogInscrito or $LogInscrito == $LogEmpresa){
+               
+        if  (($LogAdm->isnotempty()) and ($LogInscrito->isnotempty()) or ($LogAdm->isnotempty()) and ($LogEmpresa->isnotempty()) or ($LogInscrito->isnotempty()) and ($LogEmpresa->isnotempty())){
             $resolve = TempLog::where('ip', '=', $ip);
             $resolve->update(['resolveUser' => $inputUser, 'resolveSenha' => $inputSenha]);
 
-
+            
             return redirect()->route('login.resolve');
         }
         //----------------------------------------------|
@@ -77,7 +78,7 @@ class LogInMiddleware
             $aut->ip = $ip;
             $aut->resolveUser = $inputUser;
             $aut->save();
-            return response('site.index');
+            return redirect()->route('site.index');
         }
 
 

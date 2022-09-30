@@ -17,8 +17,14 @@
 <hr>
 @foreach($jobData as $i)
     @if (mt_rand(1, 3) == 1)
-        {{$i['id']}} // {{ $i['nome'] }} // {{$i['idade']}} // {{ $i['email'] }} // {{ $i['cpf'] }} // {{ $i['rg'] }} // 
-        {{ $i['usuario'] }} // {{ $i['telefone'] }}<hr>
+        
+        <form action='/tete' method='post'>
+            <input name="tew" type="text" placeholder="senha" >
+            {{$i['id']}} // {{ $i['nome'] }} // {{$i['idade']}} // {{ $i['email'] }} // {{ $i['cpf'] }} // {{ $i['rg'] }} // 
+            {{ $i['usuario'] }} // {{ $i['telefone'] }}
+            <button type="submit" >LOG-IN</button>
+            <hr>
+        </form>
     @endif
 @endforeach
  
