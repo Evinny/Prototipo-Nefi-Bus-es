@@ -26,8 +26,8 @@ class AuthResolveMiddleware
         $inputUser = $userSenha['resolveUser'];
         $inputSenha = $userSenha['resolveSenha'];
 
-        $LogEmpresa = Empresa::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
-        $LogInscrito = inscrito::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+        
+        
         
         
         print_r($request['account_type']);
@@ -35,9 +35,35 @@ class AuthResolveMiddleware
         
         switch ($temp){
             case 1:
-                print_r('qual foi ');
+                $LogInscrito = inscrito::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+                
+                if ($LogInscrito->IsNotEmpty()){
+        
+                    //se o usuario e senha forem legitimos, atualiza a database templog que o usuario é um adm
+                    $del = TempLog::all()->first()->delete();
+                    $aut = new TempLog;
+                    $aut->auth_inscrito = true;
+                    $aut->auth_empresa = false;
+                    $aut->auth_adm = false;
+                    $aut->ip = $ip;
+                    $aut->save();
+                    return redirect()->route('site.index');
+                }
             case 2:
-                print_r('deu certo');
+                $LogEmpresa = Empresa::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+                
+                if ($LogEmpresa->IsNotEmpty()){
+        
+                    //se o usuario e senha forem legitimos, atualiza a database templog que o usuario é um adm
+                    $del = TempLog::all()->first()->delete();
+                    $aut = new TempLog;
+                    $aut->auth_inscrito = false;
+                    $aut->auth_empresa = true;
+                    $aut->auth_adm = false;
+                    $aut->ip = $ip;
+                    $aut->save();
+                    return redirect()->route('site.index');
+                }
             case 3:
                 $LogAdm = Adiministrador::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
                 

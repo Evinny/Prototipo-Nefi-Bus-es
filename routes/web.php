@@ -2,82 +2,94 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+
+
+
+
+
+
+
+
+
+
+
 //DEBUG -------|
-Route::get('/', 'DebugController@empTeste');
+Route::get('/debug', 'DebugController@Teste')->name('debug');
 
 
 
-//ROTAS DIRETAS -------|
+//-----------ROTAS DIRETAS------------//
 
-Route::get('/', function () { 
-    return view('home_page');
-})->name('site.index');
-
-Route::get('/login', function(){ //login no middleware LoginMiddleware passando pela view login e
-    return view('Login_form'); //so depois de passar pelo form, manda por post pra rota post do adm
-})->name('login');              // e é interceptado pelo middle
-
-
-
-
-//-----------------------|
-
-//-----------------------|
-
-//ROTAS INDIRETAS -------|
-
-
-route::get('/unlog', 'LogInOutController@out')->name('unlog'); //remove da base de dados temporaria
-//todos os dados de login (0 -> 1)
-
+    Route::get('/', 'HomePageController@sessao')->name('site.index');
+    route::get('/Cadastro', 'CadastroController@route')->name('register');
+    route::middleware('Cadastro')->post('/Cadastro', function(){
+        return view('redirect');
+    })->name('cadastrar');
+    
+    
+    
+//---------------------------------------//
 
 // fazer a tela depois do login dos inscritos e das empresas, fazer os administradores aceitarem apenas
-// empresas q eles aceitarem na sua aba de ferramentas, fazer o login de todos, achar uma forma de criar
-//apenas 1 middleware para fazer a autorização dos 3 caba idenpendente se for adm inscrito ou empresa
-
-//faz a inscrição de inscritos no sistema 
-route::get('/dados', 'InscriçãoController@route')->name('site.dados');
-route::post('/Inscrição', 'InscriçãoController@form')->name('site.inscrito');
+// empresas q eles aceitarem na sua aba de ferramentas, fazer o login de todos
 
 
-
-//faz a inscrição de empresas no sistema
-route::get('/dados/empresa', function(){
-    return view('reg_form_empresa');
-})->name('site.EmpresaForm');
-
-route::post('/Inscrição/empresa', 'InscriçãoController@emp_form')->name('site.EmpresaLog');
-
-route::get('/Empresa/tools', 'EmpresaController@tools')->name('empresa.tools');
+//-----------ROTAS INDIRETAS------------//
 
 
 
 
-//autoriza e loga as seçoes adiministradoras
-route::get('/admin/login', 'AdminController@log')->name('site.admi'); //-> acessa diretamente as ferramentas
-
-route::middleware('login')->post('/login', function(){})->name('site.adm'); //-> serve apenas para um form dar um redirect
-//para salvar as informaçoes de login atravez do middleware login
-
+    //-----------INSCRITOS------------//
+    //faz a inscrição de inscritos no sistema 
+    route::get('/dados', 'InscriçãoController@route')->name('site.dados');
+    route::post('/Inscrição', 'InscriçãoController@form')->name('site.inscrito');
 
 
-//adiministra caso o usuario que está tentando logar tenha mais de 1 conta
-route::get('/login/resolve', 'InscriçãoController@resolve')->name('login.resolve');//
-route::post('/login/resolve', 'InscriçãoController@resolve')->name('login.resolve');
-route::middleware('resolve')->post('/login/resolved', 'InscriçãoController@resolved')
-->name('login.resolved');
 
+    //-----------EMPRESAS------------//
+    //faz a inscrição de empresas no sistema
+    route::get('/dados/empresa', function(){
+        return view('reg_form_empresa');
+    })->name('site.EmpresaForm');//Acessa o formulario
+        route::post('/Inscrição/empresa', 'InscriçãoController@emp_form')->name('site.EmpresaLog');//faz a inserção no banco
 
-//-----------------------|
+    //acessa o menu tools das empresas
+    route::get('/Empresa/tools', 'EmpresaController@tools')->name('empresa.tools');
 
+        
+
+    //-----------ADIMINISTRAÇÃO------------//
+        
+    route::get('/admin/tools', 'AdminController@log')->name('site.admi'); //-> acessa diretamente as ferramentas do menu tools
+    route::post('/admin/tools', 'AdminController@confirm_emp')->name('site.adm');
+        
+    //---------------------------------------//
+        
+//-----------LOGIN------------//
+        
+        
+    Route::get('/login', function(){ 
+        return view('Login_form'); 
+    })->name('login'); //acessa o formulario de login diretamente
+
+    route::middleware('login')->post('/login', function(){})->name('site.login'); //faz o login de uma conta atravez do middleware "login"
+    //e loga a conta no banco, ou inicia o resolve caso tenha contas repetidas em outros bancos
+    
+    route::get('/unlog', 'LogInOutController@out')->name('unlog'); //remove da base de dados temporaria
+    //todos os dados de login (0 -> 1)
+        
+    //-----------CONTAS REPETIDAS------------//
+        route::get('/login/resolve', 'InscriçãoController@resolve')->name('login.resolve');//
+        route::post('/login/resolve', 'InscriçãoController@resolve')->name('login.resolve');
+        route::middleware('resolve')->post('/login/resolved', 'InscriçãoController@resolved')
+        ->name('login.resolved');
+        
+        
+//---------------------------------------//
+
+//-----------FALLBACK------------//
+Route::fallback(function() {
+    return view('wip');
+});
 

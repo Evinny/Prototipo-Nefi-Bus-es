@@ -7,7 +7,7 @@ use App\Adiministrador;
 use App\Empresa;
 use App\Inscrito;
 use App\Http\Middleware\LoginMiddleware;
-
+use App\EmpresaConfirmada;
 
 class AdminController extends Controller
 {
@@ -20,14 +20,41 @@ class AdminController extends Controller
         
         $data_emp = Empresa::where('id', '>', '0')->get()->toarray();           
         $data_ins = Inscrito::all();
-        return view('adm_tools')->with(['data_emp' => $data_emp])->with(['inscritos' => $data_ins]);
+        $data_emp_conf = EmpresaConfirmada::all();
+        return view('adm_tools')->with(['data_emp' => $data_emp])->with(['data_ins' => $data_ins])->with(['data_emp_conf' => $data_emp_conf]);;
             
 
 
 
     }
 
-    
+    public function confirm_emp(){
+        print_r($_POST);
+        $teste = array($_POST);
+        //print_r($teste);
+        
+        $confirm = new EmpresaConfirmada;
+        
+        $confirm->nome = $_POST['nome'];
+        $confirm->tipo = $_POST['tipo'];
+        $confirm->email = $_POST['email'];
+        $confirm->cnpj = $_POST['cnpj'];
+        $confirm->responsavel = $_POST['responsavel'];
+        $confirm->estado = $_POST['estado'];
+        $confirm->telefone = $_POST['telefone'];
+        if (isset($_POST['usuario'])){
+            $confirm->usuario = $_POST['usuario'];
+        }
+        if (isset($_POST['senha'])){
+            $confirm->senha = $_POST['senha'];
+        }
+        
+        $confirm->save();
+        
+        $remove = Empresa::where('id', '=', $_POST['id'])->delete();
+
+        return redirect()->route('site.admi');
+    }
 
     public function form(){
         echo('entre na sua conta');

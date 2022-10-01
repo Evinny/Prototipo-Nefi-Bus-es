@@ -44,15 +44,6 @@ class InscriçãoController extends Controller
         return view('reg_form');
     }
     
-    
-    
-    
-    
-    public function emp_route(){
-        echo('registre sua empresa');
-        return view('reg_form_empresa');
-
-    }
     public function emp_form(request $request){
         
         $request->validate([

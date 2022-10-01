@@ -63,9 +63,11 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'login' => \App\Http\Middleware\LoginMiddleware::class,
-        'AutorizarAdm' => \App\Http\Middleware\AdmlogMiddleware::class,
-        'resolve' => \App\Http\Middleware\AuthResolveMiddleware::class,
-        'AutorizarEmp' => \App\Http\Middleware\EmpresalogMiddleware::class,
+        
+        'login' => \App\Http\Middleware\LoginMiddleware::class, //faz todo o teste se existe varias contas, e loga o usuario dado um 'POST' com o usuario e a senha
+        'AutorizarAdm' => \App\Http\Middleware\AdmlogMiddleware::class, //checa pra ver se o usuario esta logado como adm
+        'resolve' => \App\Http\Middleware\AuthResolveMiddleware::class, 
+        'AutorizarEmp' => \App\Http\Middleware\EmpresalogMiddleware::class,  //checa pra ver se o usuario esta logado como empresa
+        'Cadastro' => \App\Http\Middleware\CadastroMiddleware::class,
     ];
 }

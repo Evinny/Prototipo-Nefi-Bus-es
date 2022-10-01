@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -72,7 +73,19 @@
                         <ul class="btn">
                            {{--SEÇÃO DE LOGIN E LOGOUT--}}
                            <li class="down_btn"><a href="{{route('login')}}">Log-in</a></li>
-                           <li><a href="{{route('unlog')}}">Encerrar seção</a></li>
+                           
+                           @switch ($state)
+
+                              @case ('Encerrar sessão')
+                                 <li><a href="{{route('unlog')}}">{{$state}}</a></li>
+                                 @break
+                              @case ('Cadastrar-se')
+                                 <li><a href="{{route('register')}}">{{$state}}</a></li>
+                           
+                           @endswitch
+                           
+                           
+                           
                            <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                            <li><button type="button" id="sidebarCollapse">
                               <img src="images/menu_icon.png" alt="#" />

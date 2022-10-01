@@ -9,6 +9,6 @@ use App\TempLog;
 class DebugController extends Controller
 {
     public function Teste(){
-        
+        print_r('chegamos no debug');
     }
 }
