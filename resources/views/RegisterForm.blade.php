@@ -86,7 +86,7 @@
     </head>
     <body style="background-color:rgb(0, 0, 0)  ;">
         <div class="container">
-            <img src="images\cadastro\insideBus.jpg" alt="Sno" style="width:100%;">
+            <img src="images\cadastro\insideBus.jpg" alt="Sno" style="width:100%" position="fixed">
             <div class="bottom-left"></div>
             <div class="top-left">
                 <a class="read_more" href="{{route('site.index')}}" ><font color='red'><h3>voltar</font><h3></a><hr>

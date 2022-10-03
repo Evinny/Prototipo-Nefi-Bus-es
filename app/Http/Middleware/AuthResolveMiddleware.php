@@ -47,6 +47,7 @@ class AuthResolveMiddleware
                     $aut->auth_empresa = false;
                     $aut->auth_adm = false;
                     $aut->ip = $ip;
+                    $aut->resolveUser = $inputUser;
                     $aut->save();
                     return redirect()->route('site.index');
                 }
@@ -62,6 +63,7 @@ class AuthResolveMiddleware
                     $aut->auth_empresa = true;
                     $aut->auth_adm = false;
                     $aut->ip = $ip;
+                    $aut->resolveUser = $inputUser;
                     $aut->save();
                     return redirect()->route('site.index');
                 }
@@ -77,6 +79,7 @@ class AuthResolveMiddleware
                     $aut->auth_empresa = false;
                     $aut->auth_adm = true;
                     $aut->ip = $ip;
+                    $aut->resolveUser = $inputUser;
                     $aut->save();
                     return redirect()->route('site.index');
                 }

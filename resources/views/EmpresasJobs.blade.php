@@ -4,9 +4,20 @@
 <h2>Trabalhos propostos</h2>
 <h3>ID // Nome // Idade // Email // CPF // RG // Usuario // Telefone</h3>
 <hr>
+
+
+<?php// return response(print_r($jobData));?>
+
+
+
+@if($jobData == 'Você não possui nenhum cliente')
+<hr>Perdão, voce nao possui nenhum cliente ainda<hr>
+@else
+
 @foreach($jobData as $i) {{--mostra cabas aleatorios, por enquanto--}}
-    @if (mt_rand(1, 3) == 1)
-        
+    
+    
+    
         <form action='safara' method='get'> {{--WIP: mostrar os inscritos q contrataram a empresa logada--}}
             
             
@@ -16,9 +27,11 @@
             <button type="submit" >Aceitar</button>
             <hr>
         </form>
-    @endif
+    
+
+    
 @endforeach
- 
+ @endif
 <h2>---------------</h2>
 
 
