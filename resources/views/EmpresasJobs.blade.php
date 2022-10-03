@@ -7,7 +7,7 @@
 @foreach($jobData as $i) {{--mostra cabas aleatorios, por enquanto--}}
     @if (mt_rand(1, 3) == 1)
         
-        <form action='safara' method='get'> {{--WIP: colocar um route pra atribuir um inscrio no banco de pessoas contratadas por uma empresa--}}
+        <form action='safara' method='get'> {{--WIP: mostrar os inscritos q contrataram a empresa logada--}}
             
             
             {{$i['id']}} // {{ $i['nome'] }} // {{$i['idade']}} // {{ $i['email'] }} // {{ $i['cpf'] }} // {{ $i['rg'] }} // 
@@ -25,7 +25,7 @@
 
 
 
-{{--displays todos os membros registrados no sistema--}}
+{{--displays todos os membros registrados no sistema
 <h2>Usuarios em contrato</h2>
 <h3>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone</h3>
 <hr>

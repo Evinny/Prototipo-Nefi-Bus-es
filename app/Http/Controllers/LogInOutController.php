@@ -13,7 +13,7 @@ class LogInOutController extends Controller
 
     }
 
-    public function out(){
+    public function out(){//logout
 
         $updt = TempLog::all()->first();
         $updt->auth_adm = 0;

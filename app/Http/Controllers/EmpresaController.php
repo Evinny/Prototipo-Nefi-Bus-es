@@ -12,7 +12,7 @@ class EmpresaController extends Controller
         $this->middleware('AutorizarEmp');
     }
     
-    public function tools(){
+    public function tools(){ //da as variaveis para serem mostradas na view de tools de empresas (emptools eu acho)
         //random inscritos para empresas trabalharem
     $jobData = Inscrito::all()->toarray();
     $user = TempLog::all()->pluck('resolveUser')->toarray();

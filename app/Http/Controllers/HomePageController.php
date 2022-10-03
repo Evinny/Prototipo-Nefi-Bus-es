@@ -7,7 +7,9 @@ Use App\TempLog;
 
 class HomePageController extends Controller
 {
-    public function sessao(request $request){
+    public function sessao(request $request){//checa para ver se existe um usuario ja logado ou nao para assim mostrar a mensagem 
+        //encerrar sessão, e cadastrar-se respectivamente
+        //alem de fazer o cadastro do membro local, evitando erros por nao existir a base de dados Temp_Logs
         
         $ip = $request->server->get('REMOTE_ADDR');
         

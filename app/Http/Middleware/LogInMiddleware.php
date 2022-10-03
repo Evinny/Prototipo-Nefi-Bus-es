@@ -103,7 +103,7 @@ class LogInMiddleware
             return redirect()->route('site.index');
         }
 
-
+ //depois eu faço uns comentarios bonitos q nem esses sorry
 
         return redirect()->route('login');
     }

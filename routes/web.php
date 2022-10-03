@@ -14,7 +14,14 @@ PARA SE INSCREVER COMO ADM E ACESSAR A PARTE DE ADM DO SITE
 TEM MUITAS PARTES DE DEBUG, ENTAO TENTA IGNORAR, COMO VOCE DISSE, NAO SOU FRONT-END
 
 APENAS O QUE APARECE IMEDIATAMENTE AO ABRIR O SITE QUE É FUNCIONAL, O RESTO É WIP
-*/
+
+MUITOS ARQUIVOS DESNECESSARIOS, MAS N ATRAPALHAM, E TA TARDE VOU DORMIR
+
+NOTA IMPORTANTE: FIZ O SITE INTEIRO SEM AJUDA DO CURSO DA UDEMY, APENAS COM O CONHECIMENTO DE MIDDLEWARES
+E MUITA PESQUISA NO GOOGLE, OU SEJA, AS MINHAS PRATICAS DEVEM SER AS PIORES, MAS ME DA UMA COLHERZINHA DE 
+CHA, ;-;
+
+/*=========================================================================================*/
 
 
 
@@ -54,10 +61,10 @@ Route::get('/debug', 'DebugController@Teste')->name('debug');
 
     //-----------INSCRITOS------------//
     //faz a inscrição de inscritos no sistema 
-    route::get('/inscritos/tools', 'RoutesController@instools')->name('inscritoTools');
-    route::post('/inscritos/getty', 'RoutesController@ins_parameters')->name('ins_parameters');
+    route::middleware('AutorizarIns')->get('/inscritos/tools', 'RoutesController@instools')->name('inscritoTools'); //acessa as tools dos inscritos
+    route::post('/inscritos/getty', 'RoutesController@ins_parameters')->name('ins_parameters'); //prepara para q o inscrito contrate uma empresa
 
-    route::middleware('EmpInsConfirm')->post('/inscritos/Contratação', function(){return response('oi');})->name('contratar');
+    route::middleware('EmpInsConfirm')->post('/inscritos/Contratação', function(){return response('oi');})->name('contratar'); //afirma a empresa contratada num sistema de 1 para muitos (botei o limite de 40)
 
 
 
@@ -65,20 +72,18 @@ Route::get('/debug', 'DebugController@Teste')->name('debug');
 
     //-----------EMPRESAS------------//
     //faz a inscrição de empresas no sistema
-    route::get('/dados/empresa', function(){
-        return view('reg_form_empresa');
-    })->name('site.EmpresaForm');//Acessa o formulario
-        route::post('/Inscrição/empresa', 'InscriçãoController@emp_form')->name('site.EmpresaLog');//faz a inserção no banco
+    
+        route::post('/Inscrição/empresa', 'InscriçãoController@emp_form')->name('site.EmpresaLog');//realiza o cadastro de uma empresa no banco
 
     //acessa o menu tools das empresas
-    route::get('/Empresa/tools', 'EmpresaController@tools')->name('empresa.tools');
+        route::get('/Empresa/tools', 'EmpresaController@tools')->name('empresa.tools'); //acessa o menu de tools das empresas
 
         
 
     //-----------ADIMINISTRAÇÃO------------//
         
     route::get('/admin/tools', 'AdminController@log')->name('site.admi'); //-> acessa diretamente as ferramentas do menu tools
-    route::post('/admin/tools', 'AdminController@confirm_emp')->name('site.adm');
+    route::post('/admin/tools', 'AdminController@confirm_emp')->name('site.adm'); //declara que a empresa selecionada deve ser confirmada
         
     //---------------------------------------//
         
@@ -96,10 +101,10 @@ Route::get('/debug', 'DebugController@Teste')->name('debug');
     //todos os dados de login (0 -> 1)
         
     //-----------CONTAS REPETIDAS------------//
-        route::get('/login/resolve', 'InscriçãoController@resolve')->name('login.resolve');//
-        route::post('/login/resolve', 'InscriçãoController@resolve')->name('login.resolve');
+        route::get('/login/resolve', 'InscriçãoController@resolve')->name('login.resolve');//acessa a parte de resolução do problema de varias contas
+        
         route::middleware('resolve')->post('/login/resolved', 'InscriçãoController@resolved')
-        ->name('login.resolved');
+        ->name('login.resolved'); //conclui o problema e loga o usuario escolhido
         
         
 //---------------------------------------//

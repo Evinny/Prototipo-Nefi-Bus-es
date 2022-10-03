@@ -19,7 +19,7 @@ class AdmlogMiddleware
         
         $ip = $request->server->get('REMOTE_ADDR');
 
-        
+        //simplesmente verifica se o usuario atual na (temp_log) está logado como adiministrador
         $autenticate = TempLog::all()->first()->toarray();
 
         if ($autenticate['ip'] == $ip){

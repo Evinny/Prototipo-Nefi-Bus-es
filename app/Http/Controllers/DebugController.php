@@ -8,7 +8,7 @@ use App\TempLog;
 
 class DebugController extends Controller
 {
-    public function Teste(){
+    public function Teste(){ //zona de teste
         print_r('chegamos no debug');
     }
 }

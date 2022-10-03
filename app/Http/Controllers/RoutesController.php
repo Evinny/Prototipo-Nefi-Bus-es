@@ -8,7 +8,7 @@ use App\TempLog;
 
 class RoutesController extends Controller
 {
-    public function instools(){
+    public function instools(){ //da a inscritos tools as informaçoes necessarias, 
         $dataEmp = EmpresaConfirmada::all()->toarray();
         
         return view('inscrito_tools')->with('dataEmp', $dataEmp);

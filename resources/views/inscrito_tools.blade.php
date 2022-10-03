@@ -12,7 +12,7 @@
 
 <hr>
 @foreach($dataEmp as $i)
-        <form action='{{route('ins_parameters')}}' method='post'> {{--WIP: colocar um route pra atribuir um inscrio no banco de pessoas contratadas por uma empresa--}}
+        <form action='{{route('ins_parameters')}}' method='post'> {{--mostra empresas e um botao para contratar uma em especifico (1 empresa pra cada inscrito e varios inscritos para 1 empresa)--}}
         @csrf          
             <input name='id' type='hidden' value= '{{$i['id']}}'>
             <input name='nome' type='hidden' value= '{{$i['nome']}}'>

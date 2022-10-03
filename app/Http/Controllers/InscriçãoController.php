@@ -11,35 +11,9 @@ use App\TempLog;
 
 class InscriçãoController extends Controller
 {
-    public function form(request $request){
-      
-        $request->validate([
-            'nome'=>'required', 'sobrenome'=>'required',
-            'idade'=>'required', 'telefone'=>'required',
-            'rg'=>'required', 'cpf'=>'required', 'email'=>'required','usuario'=>'required', 
-            'senha'=>'required'
-        ]);
+    
 
-        $insert = new Inscrito;
-        $insert->nome = $_POST['nome'];
-        $insert->sobrenome = $_POST['sobrenome'];
-        $insert->cpf = $_POST['cpf'];
-        $insert->rg =  $_POST['rg'];
-        $insert->idade =  $_POST['idade'];
-        $insert->telefone = $_POST['telefone'];
-        $insert->email = $_POST['email'];
-        $insert->usuario = $_POST['usuario'];
-        $insert->senha = $_POST['senha'];
-        
-
-        $insert->save();     
-        
-        
-
-        return view('redirect');
-    }
-
-    public function route(){
+    public function route(){ //n sei se ta sendo usado
         echo('Inscrição');
         echo(' ');
         return view('reg_form');
@@ -47,34 +21,8 @@ class InscriçãoController extends Controller
     
     
 
-    public function emp_form(request $request){
-        
-        $request->validate([
-            'nome'=>'required', 'responsavel'=>'required',
-            'tipo'=>'required', 'telefone'=>'required',
-            'estado'=>'required', 'cnpj'=>'required', 'email'=>'required','usuario'=>'required', 
-            'senha'=>'required',
-        ]);
-        
-        $insert = new Empresa;
-        $insert->nome = $_POST['nome'];
-        $insert->responsavel = $_POST['responsavel'];
-        $insert->cnpj = $_POST['cnpj'];
-        $insert->email =  $_POST['email'];
-        $insert->estado =  $_POST['estado'];
-        $insert->telefone = $_POST['telefone'];
-        $insert->tipo = $_POST['tipo'];
-        $insert->usuario = $_POST['usuario'];
-        $insert->senha = $_POST['senha'];
-
-        $insert->save();     
-        
-        
-
-        return view('redirect');
-    }
-
-    public function resolve(request $request){
+    public function resolve(request $request){ //prepara tudo para que o usuario escolha qual das contas quer logar-se (adm emp ou inscrito)
+        //assim resolvendo o problema de contas repetidas
 
         $temp = TempLog::all()->first()->toarray();
         
@@ -101,7 +49,7 @@ class InscriçãoController extends Controller
 
     }
 
-    public function resolved(request $request){
+    public function resolved(request $request){ //redirect do middleware login, so pq eu quis msm
         
         print_r($request['account_type']);
         $temp = $_POST['account_type'];

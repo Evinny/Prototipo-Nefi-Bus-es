@@ -24,8 +24,8 @@
 --}}
 
 
-{{-- mostra todas as empresas registradas no sistema, WIP:AUTORIZAÇÃO DE EMPRESAS PELO ADM ANTES
-    QUE ENTREM NA DATABASE OFICIAL--}}
+{{-- mostra todas as empresas registradas no sistema, e faz um botao para selecionar uma empresa para
+    ser autorizada e registrada como oficial--}}
     
     <center><h2><FONT COLOR="black"><u>Empresas pendentes</u></FONT COLOR="black"></h2></center>
     <h3><i>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone // Usuario:</i></h3>
@@ -53,7 +53,7 @@
     @endforeach
     <br><br>
     <br>
-    
+    {{--mostra as empresas registradas--}}
     <center><FONT COLOR="black"><u><h2>Empresas registradas</h2></u></FONT COLOR="black"></center>
     <h3><i>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone // Usuario:</i></h3>
     <hr>

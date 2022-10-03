@@ -20,7 +20,7 @@ class EmpresaInscritoRelation
      */
     public function handle($request, Closure $next)
     {
-        
+        //estabelece a relação entre varios inscritos para uma só empresa
         $log = TempLog::all()->first()->toarray();
         $EmpresaConf = EmpresaConfirmada::all();
         $Inscrito = Inscrito::all();
@@ -33,7 +33,7 @@ class EmpresaInscritoRelation
         print_r($senha);
         print_r($usuario);
         
-        if($detect->count() > 20)
+        if($detect->count() > 20) //limite de 20 inscritos por empresa
             return response('empresa lotada');
 
         $auth = Inscrito::where('usuario', '=', $usuario )->where( 'senha', '=', $senha)->get();

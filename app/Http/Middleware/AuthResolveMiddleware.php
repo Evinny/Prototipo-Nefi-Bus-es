@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Adiministrador;
 use App\Empresa;
+use App\EmpresaConfirmada;
 use App\Inscrito;
 use App\TempLog;
 
@@ -50,7 +51,7 @@ class AuthResolveMiddleware
                     return redirect()->route('site.index');
                 }
             case 2:
-                $LogEmpresa = Empresa::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+                $LogEmpresa = EmpresaConfirmada::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
                 
                 if ($LogEmpresa->IsNotEmpty()){
         

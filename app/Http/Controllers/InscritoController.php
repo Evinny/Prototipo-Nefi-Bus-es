@@ -8,17 +8,9 @@ use App\Empresa;
 
 class InscritoController extends Controller
 {
-    public function __construct(){
+    public function __construct(){//ainda tenho planos para esse controlador
         $this->middleware('EmpInsConfirm');
-    }
-
-
-    public function tools(){
-        return response('oiiiiiiiiiiiii');
-        $dataEmp = Empresa::all()->toarray();
-
-        return view('inscrito_tools')->with('dataEmp', $dataEmp);
-
+    
 
     }
 

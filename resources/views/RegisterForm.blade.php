@@ -97,7 +97,7 @@
                 <div class="outline">
                 <h2> Cadastro<h2>
                 </div>
-                    <hr><h2>Inscritos</h2><br>
+                    <hr><h2>Inscritos</h2><br> {{--junta o formulario de cadastro dos inscritos e empresas e os cadastra separadamente--}}
                 <form action='{{ route('cadastrar') }}' method="post">
                     @csrf
                     <input name="usuario" type="text" placeholder="Nome de usuario" >

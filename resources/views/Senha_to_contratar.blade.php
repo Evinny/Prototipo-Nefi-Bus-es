@@ -12,7 +12,7 @@
 
 <p><b>digite sua senha para confirmar o contratamento da empresa listada</b></p>
 
-
+{{--apenas para exigir a senha de um modo intuitivo ao tentar contratar uma empresa, para evitar fraude--}}
 <form action='{{ route('contratar') }}' method="post">    
     @csrf
                 

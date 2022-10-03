@@ -16,7 +16,7 @@ class AdminController extends Controller
     }
     
     
-    public function log(request $request){
+    public function log(request $request){ //manda as info para serem mostradas na view adm tools
         
         $data_emp = Empresa::where('id', '>', '0')->get()->toarray();           
         $data_ins = Inscrito::all();
@@ -28,7 +28,7 @@ class AdminController extends Controller
 
     }
 
-    public function confirm_emp(){
+    public function confirm_emp(){ //controller q faz a confirmação de uma empresa após o usuario a selecionar
         print_r($_POST);
         $teste = array($_POST);
         //print_r($teste);
@@ -56,8 +56,5 @@ class AdminController extends Controller
         return redirect()->route('site.admi');
     }
 
-    public function form(){
-        echo('entre na sua conta');
-        return view('adm_login');
-    }
+   
 }

@@ -26,11 +26,11 @@ class CadastroMiddleware
 
 
 
-        $tipo = $_POST['tipo'];
+        $tipo = $_POST['tipo'];//vinda la da view de cadastro dizendo qual é o tipo de cadastro
 
         switch($tipo){
-            case 1:
-                $request->validate([
+            case 1: //cadastra inscritos
+                $request->validate([ 
                     'nome'=>'required', 'sobrenome'=>'required',
                     'idade'=>'required', 'telefone'=>'required',
                     'rg'=>'required', 'cpf'=>'required', 'email'=>'required','usuario'=>'required', 
@@ -56,7 +56,7 @@ class CadastroMiddleware
             
             case 2:
                 
-                $request->validate([
+                $request->validate([//cadastro de empresas
                     'nome'=>'required', 'responsavel'=>'required',
                     'tipo'=>'required', 'telefone'=>'required',
                     'estado'=>'required', 'cnpj'=>'required', 'email'=>'required','usuario'=>'required', 
