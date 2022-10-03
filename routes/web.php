@@ -6,6 +6,18 @@ use Illuminate\Support\Facades\Route;
 
 
 
+/*=========================================================================================//
+
+NOTAS: A UNICA COISA QUE FALTA, É IR NO BANCO E CRIAR UMA CONTA NA TABELA 'ADIMINISTRADORES'
+PARA SE INSCREVER COMO ADM E ACESSAR A PARTE DE ADM DO SITE
+
+TEM MUITAS PARTES DE DEBUG, ENTAO TENTA IGNORAR, COMO VOCE DISSE, NAO SOU FRONT-END
+
+APENAS O QUE APARECE IMEDIATAMENTE AO ABRIR O SITE QUE É FUNCIONAL, O RESTO É WIP
+*/
+
+
+
 
 
 
@@ -42,8 +54,12 @@ Route::get('/debug', 'DebugController@Teste')->name('debug');
 
     //-----------INSCRITOS------------//
     //faz a inscrição de inscritos no sistema 
-    route::get('/dados', 'InscriçãoController@route')->name('site.dados');
-    route::post('/Inscrição', 'InscriçãoController@form')->name('site.inscrito');
+    route::get('/inscritos/tools', 'RoutesController@instools')->name('inscritoTools');
+    route::post('/inscritos/getty', 'RoutesController@ins_parameters')->name('ins_parameters');
+
+    route::middleware('EmpInsConfirm')->post('/inscritos/Contratação', function(){return response('oi');})->name('contratar');
+
+
 
 
 

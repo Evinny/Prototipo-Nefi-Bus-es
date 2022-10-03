@@ -69,5 +69,7 @@ class Kernel extends HttpKernel
         'resolve' => \App\Http\Middleware\AuthResolveMiddleware::class, 
         'AutorizarEmp' => \App\Http\Middleware\EmpresalogMiddleware::class,  //checa pra ver se o usuario esta logado como empresa
         'Cadastro' => \App\Http\Middleware\CadastroMiddleware::class,
+        'AutorizarIns' => \App\Http\Middleware\InscritologMiddleware::class,
+        'EmpInsConfirm' => \App\Http\Middleware\EmpresaInscritoRelation::class,
     ];
 }

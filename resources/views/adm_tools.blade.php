@@ -1,7 +1,20 @@
 
+<html>
+    <head>
+       <title>Adms</title>
+    </head>
+    <body style="background-color:rgb(216, 216, 216)  ;">
+        <style>       
+            hr{
+                height: 1px;
+                background-color: black;
+                border: none;
+            }
+        </style>
 
 
-<a class="read_more" href="{{route('site.index')}}"><h3>voltar<h3></a><hr>
+
+<a class="read_more" href="{{route('site.index')}}"><h3><FONT COLOR="red">voltar</FONT COLOR=""><h3></a><hr>
 {{--WIP:FERRAMENTAS PARA APAGAR, ADICIONAR E MODIFICAR--}}
 
 {{--}}
@@ -14,8 +27,8 @@
 {{-- mostra todas as empresas registradas no sistema, WIP:AUTORIZAÇÃO DE EMPRESAS PELO ADM ANTES
     QUE ENTREM NA DATABASE OFICIAL--}}
     
-    <h2>Empresas pendentes</h2>
-    <h3>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone</h3>
+    <center><h2><FONT COLOR="black"><u>Empresas pendentes</u></FONT COLOR="black"></h2></center>
+    <h3><i>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone // Usuario:</i></h3>
     <hr>
     @foreach($data_emp as $i)
         <form action='{{route('site.adm')}}' method='post'> {{--WIP: colocar um route pra atribuir um inscrio no banco de pessoas contratadas por uma empresa--}}
@@ -32,31 +45,33 @@
             <input name='senha' type='hidden' value= '{{$i['senha']}}'>
             
             {{$i['id']}} // {{ $i['nome'] }} // {{$i['tipo']}} // {{ $i['email'] }} // {{ $i['cnpj'] }} // {{ $i['responsavel'] }} // 
-            {{ $i['estado'] }} // {{ $i['telefone'] }}  ||  {{--mostra todos os atributos de cada empresa esperando para serem registradas--}}
+            {{ $i['estado'] }} // {{ $i['telefone'] }} // {{$i['usuario']}} ||  {{--mostra todos os atributos de cada empresa esperando para serem registradas--}}
             
             <button type="submit" >Aceitar</button>
             <hr>
         </form>
     @endforeach
     <br><br>
-    <h2>---------------</h2>
+    <br>
     
-    <h2>Empresas registradas</h2>
-    <h3>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone</h3>
+    <center><FONT COLOR="black"><u><h2>Empresas registradas</h2></u></FONT COLOR="black"></center>
+    <h3><i>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone // Usuario:</i></h3>
     <hr>
     @foreach($data_emp_conf as $i)
         {{$i['id']}} // {{ $i['nome'] }} // {{$i['tipo']}} // {{ $i['email'] }} // {{ $i['cnpj'] }} // {{ $i['responsavel'] }} // 
-        {{ $i['estado'] }} // {{ $i['telefone'] }} <hr>
+        {{ $i['estado'] }} // {{ $i['telefone'] }} // {{$i['usuario']}} || <hr>
     @endforeach
     
     <h2>---------------</h2>
     
 {{--displays todos os membros(inscritos) registrados no sistema--}}
-<h2>Membros Registrados</h2>
-<h3>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone</h3>
+<center><h2><FONT COLOR="black"><u>Membros Registrados</u></FONT COLOR="black"></h2></center>
+<h3><i>Nome // Tipo // Email // Cnpj // Responsavel // Estado // Telefone // Usuario:</i></h3>
 <hr>
 @foreach($data_ins as $i)
 {{$i['id']}} // {{ $i['nome'] }} // {{$i['sobrenome']}} // {{ $i['email'] }} // {{ $i['cpf'] }} // {{ $i['rg'] }} // 
-{{ $i['idade'] }} // {{ $i['telefone'] }} <hr>
+{{ $i['idade'] }} // {{ $i['telefone'] }} // {{$i['usuario']}} || <hr>
 @endforeach
  
+</body>
+</html>

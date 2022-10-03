@@ -15,6 +15,6 @@ class InscritologMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        return response('tetetetetet');
     }
 }

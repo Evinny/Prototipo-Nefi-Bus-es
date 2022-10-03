@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Adiministrador;
 use App\Empresa;
+use App\EmpresaConfirmada;
 use App\Inscrito;
 use App\TempLog;
 
@@ -44,6 +45,8 @@ class InscriçãoController extends Controller
         return view('reg_form');
     }
     
+    
+
     public function emp_form(request $request){
         
         $request->validate([
@@ -74,11 +77,12 @@ class InscriçãoController extends Controller
     public function resolve(request $request){
 
         $temp = TempLog::all()->first()->toarray();
+        
         $inputUser = $temp['resolveUser'];
         $inputSenha = $temp['resolveSenha'];
         //a variavel $inputuser so existe no middleware
         $LogAdm = Adiministrador::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
-        $LogEmpresa = Empresa::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
+        $LogEmpresa = EmpresaConfirmada::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
         $LogInscrito = inscrito::where('usuario', '=', $inputUser )->where('senha', '=', $inputSenha )->get();
 
         $Existsa = '';
@@ -102,16 +106,9 @@ class InscriçãoController extends Controller
         print_r($request['account_type']);
         $temp = $_POST['account_type'];
         
-        switch ($temp){
-            case 1:
-                print_r('qual foi ');
-            case 2:
-                print_r('deu certo');
-            case 3:
-                
-        }
         
-        print_r($_POST['account_type']);
+        
+        return redirect()->route('site.index');
     }
 
 

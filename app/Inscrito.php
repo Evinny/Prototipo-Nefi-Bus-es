@@ -9,5 +9,5 @@ class Inscrito extends Model
 {
     use SoftDeletes;
 
-    protected $fillable=['nome', 'sobrenome', 'cpf', 'rg', 'telefone', 'idade'];
+    protected $fillable=['nome', 'sobrenome', 'cpf', 'rg', 'telefone', 'idade', 'id', 'empresa_confirm_id'];
 }

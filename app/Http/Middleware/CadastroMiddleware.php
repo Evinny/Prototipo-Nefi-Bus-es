@@ -19,6 +19,13 @@ class CadastroMiddleware
     {
         
 
+
+
+        
+
+
+
+
         $tipo = $_POST['tipo'];
 
         switch($tipo){

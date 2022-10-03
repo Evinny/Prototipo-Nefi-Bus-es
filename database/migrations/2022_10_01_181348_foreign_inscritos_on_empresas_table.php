@@ -13,11 +13,20 @@ class ForeignInscritosOnEmpresasTable extends Migration
      */
     public function up()
     {
+        
+        
         schema::table('inscritos', function(blueprint $table){
-           // $table->unsignedbiginteger('empresa_id');
+           $table->unsignedBigInteger('empresa_confirm_id')->nullable()->nullOnDelete();
 
-            // $table->foreign('empresa_id')->references('id')->on('empresas')->ondelete('set null')
+            
+            
         });
+        schema::table('inscritos', function(blueprint $table){
+            
+ 
+            $table->foreign('empresa_confirm_id')->references('id')->on('empresa_confirmadas');
+             
+         });
     }
 
     /**
@@ -27,6 +36,9 @@ class ForeignInscritosOnEmpresasTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('inscritos', function (Blueprint $table) {
+            $table->dropForeign('inscritos_empresa_confirm_id_foreign');
+            $table->dropcolumn('empresa_confirm_id');
+        });
     }
 }

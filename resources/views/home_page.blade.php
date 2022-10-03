@@ -113,10 +113,10 @@
                         <div class="row">
                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
                               <div class="text-bg">
-                                 <h1>Facilite <br>sua vida e seja um<br>inscrito</h1>
-                                 <p>Melhor serviço de transporte em massa na palma da sua mão</p>
+                                 <h1>Se for longe <br>deixe conosco<br></h1>
+                                 <p>Viajens rapidas, simples e sem buriocracia ao alcançe de um clique</p>
                                    {{--SEÇÃO DE INSCRIÇÃO DO INSCRITO--}}
-                                 <a class="read_more" href='{{route('site.dados')}}'>Inscreva-se</a>
+                                 <a class="read_more" href='{{route('inscritoTools')}}'>Acesse</a>
                               </div>
                            </div>
                            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
@@ -134,10 +134,10 @@
                         <div class="row">
                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
                               <div class="text-bg">
-                                 <h1>Quer trabalhar<br>conosco?<br></h1>
-                                 <p>registre sua empresa e consiga mais viagens </p>
+                                 <h1>Para expandir sua empresa</h1>
+                                 <p>Divulgue, receba, e relaxe com nossas ferramentas feitas exclusivamente para sua empresa!</p>
                                  {{--SEÇÃO DE INSCRIÇÃO DE EMPRESAS--}}
-                                 <a class="read_more" href="{{route('empresa.tools')}}">entre</a>
+                                 <a class="read_more" href="{{route('empresa.tools')}}">Acesse</a>
                               </div>
                            </div>
                            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
@@ -155,8 +155,8 @@
                         <div class="row">
                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
                               <div class="text-bg">
-                                 <h1>Moderador?<br> Entre em sua conta <br>e gerencie!</h1>
-                                 <p>Configuraçoes e ferramentas faceis e praticas para voce manejar</p>
+                                 <h1>Moderador?<br>Modere!<br></h1>
+                                 <p>Ambiente de trabalho simples e conciso e com ferramentas poderosas para seu moderamento!</p>
                                  {{--SEÇÃO DE REDIRECT PARA FERRAMENTAS ADM COM VERIFICAÇÃO DE LOGIN--}}
                                  <a class="read_more" href="{{route('site.admi')}}">entre</a>
                               </div>
